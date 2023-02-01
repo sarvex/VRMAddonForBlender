@@ -16,7 +16,7 @@ https://opensource.org/licenses/mit-license.php
 bl_info = {
     "name": "VRM format",
     "author": "saturday06, iCyP",
-    "version": (2, 14, 4),
+    "version": (2, 14, 6),
     "blender": (2, 83, 0),
     "location": "File > Import-Export",
     "description": "Import-Edit-Export VRM",
@@ -66,7 +66,7 @@ def register() -> None:
 
         try:
             os.remove(github_code_download_zip_path)
-        except (FileNotFoundError, PermissionError):
+        except OSError:
             logger.exception(
                 "%s Failed to remove the partial add-on archive: %s",
                 log_warning_prefix,
