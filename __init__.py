@@ -44,9 +44,6 @@ def register() -> None:
             + f"but the current version is {bpy.app.version}"
         )
 
-    # https://github.com/saturday06/VRM-Addon-for-Blender/blob/2_5_0/io_scene_vrm/common/logging.py#L5-L7
-    log_warning_prefix = "[VRM Add-on:Warning]"
-
     # For users who have acquired the add-on from "Code" -> "Download ZIP" on GitHub.
     github_code_download_zip_path = (
         Path(__file__).parent
@@ -55,6 +52,9 @@ def register() -> None:
         / ("_".join(map(str, bl_info["version"])) + ".zip")
     )
     if github_code_download_zip_path.exists():
+        # https://github.com/saturday06/VRM-Addon-for-Blender/blob/2_5_0/io_scene_vrm/common/logging.py#L5-L7
+        log_warning_prefix = "[VRM Add-on:Warning]"
+
         # github_code_download_zip_pathにファイルが存在する場合、それに含まれているソースコードを展開する。
         #
         # このアドオンは昔GitHubの "Code" -> "Download ZIP" からダウンロードして使う方式を採用していた。
